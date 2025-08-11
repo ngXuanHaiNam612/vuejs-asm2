@@ -1,0 +1,152 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "Cà phê Sách Đà Nẵng",
+      "content": "Không gian yên tĩnh, nhiều sách, phù hợp học tập và làm việc. Địa chỉ: 123 Lê Duẩn, Đà Nẵng.",
+      "author": "Hải Nam",
+      "authorId": 1,
+      "createdAt": "2025-07-01T00:00:00.000Z",
+      "image": "/images/banner-1.jpg",
+      "comments": [
+        {
+          "id": 1754917457124,
+          "content": "chào",
+          "author": "Hải Nam",
+          "authorId": 1,
+          "avatar": "https://scontent.fsgn21-1.fna.fbcdn.net/v/t39.30808-1/473188510_3913475272259903_883054849279272328_n.jpg?stp=cp0_dst-jpg_s40x40_tt6&_nc_cat=106&ccb=1-7&_nc_sid=e99d92&_nc_ohc=XkZC_GkTO24Q7kNvwE1TWT0&_nc_oc=AdlCvr3wCHl2T1O5bcgLvgjhSKMrkpwK-Weg5BS58RGvlql253gDAU4nI8RPykaeL7I&_nc_zt=24&_nc_ht=scontent.fsgn21-1.fna&_nc_gid=zwnqom6wJDI_EnKx9fuvIQ&oh=00_AfTFikgrx9kcFrdq0Elz6z5ELRx8YlEpNSzTCrRUsh9U3A&oe=68894495",
+          "createdAt": "2025-08-11T13:04:17.124Z"
+        },
+        {
+          "id": 1754917636056,
+          "content": "asdasd",
+          "author": "Hải Nam 123",
+          "authorId": "1",
+          "avatar": "https://via.placeholder.com/120x120/007bff/ffffff?text=HN",
+          "createdAt": "2025-08-11T13:07:16.056Z"
+        },
+        {
+          "id": 1754917665762,
+          "content": "à hả",
+          "author": "Hải Nam 123",
+          "authorId": "1",
+          "avatar": "https://via.placeholder.com/120x120/007bff/ffffff?text=HN",
+          "createdAt": "2025-08-11T13:07:45.762Z"
+        },
+        {
+          "id": 1754917672137,
+          "content": "vậy sao",
+          "author": "Hải Nam 123",
+          "authorId": "1",
+          "avatar": "https://via.placeholder.com/120x120/007bff/ffffff?text=HN",
+          "createdAt": "2025-08-11T13:07:52.137Z"
+        }
+      ],
+      "views": 159
+    },
+    {
+      "id": "2",
+      "title": "Bãi biển Mỹ Khê",
+      "content": "Một trong những bãi biển đẹp nhất Việt Nam, nước trong xanh, cát trắng mịn. Địa chỉ: Võ Nguyên Giáp, Đà Nẵng.",
+      "author": "Admin",
+      "authorId": "1",
+      "createdAt": "2025-06-20T00:00:00.000Z",
+      "image": "/images/banner-2.jpg",
+      "comments": [],
+      "views": 232
+    },
+    {
+      "id": "3",
+      "title": "Cầu Rồng",
+      "content": "Biểu tượng nổi bật của Đà Nẵng, nổi tiếng với màn phun lửa và nước vào cuối tuần. Địa chỉ: Đường Nguyễn Văn Linh, Đà Nẵng.",
+      "author": "Admin",
+      "authorId": "1",
+      "createdAt": "2025-06-10T00:00:00.000Z",
+      "image": "/images/banner-3.jpg",
+      "comments": [],
+      "views": 180
+    },
+    {
+      "id": "4",
+      "title": "Bà Nà Hills",
+      "content": "Khu du lịch nổi tiếng với khí hậu mát mẻ quanh năm, Cầu Vàng độc đáo. Địa chỉ: Hòa Ninh, Hòa Vang, Đà Nẵng.",
+      "author": "Admin",
+      "authorId": "1",
+      "createdAt": "2025-05-30T00:00:00.000Z",
+      "image": "/images/banner-1.jpg",
+      "comments": [],
+      "views": 120
+    },
+    {
+      "id": "5",
+      "title": "Chợ Cồn",
+      "content": "Thiên đường ẩm thực với nhiều món ăn đặc sản miền Trung. Địa chỉ: 290 Hùng Vương, Đà Nẵng.",
+      "author": "Admin",
+      "authorId": "1",
+      "createdAt": "2025-05-15T00:00:00.000Z",
+      "image": "/images/banner-2.jpg",
+      "comments": [],
+      "views": 95
+    },
+    {
+      "id": "6",
+      "title": "Ngũ Hành Sơn",
+      "content": "Quần thể núi đá vôi nổi tiếng, nhiều hang động và chùa chiền linh thiêng. Địa chỉ: 81 Huyền Trân Công Chúa, Đà Nẵng.",
+      "author": "Admin",
+      "authorId": "1",
+      "createdAt": "2025-05-01T00:00:00.000Z",
+      "image": "/images/banner-3.jpg",
+      "comments": [],
+      "views": 110
+    },
+    {
+      "id": "c83a",
+      "title": "heheheheasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsa",
+      "content": "asdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsaasdasdasdsa",
+      "image": "https://media.istockphoto.com/id/1198931639/vi/anh/vi%E1%BA%BFt-blog-blogger-c%C3%B3-%E1%BA%A3nh-h%C6%B0%E1%BB%9Fng-%C4%91%E1%BB%8Dc-v%C4%83n-b%E1%BA%A3n-tr%C3%AAn-m%C3%A0n-h%C3%ACnh.jpg?s=612x612&w=0&k=20&c=45lClhnhzhPjspwU-zIYQn3W6x--UFAvXVXWaLyQ6i8=",
+      "author": "test",
+      "authorId": 1754917795319,
+      "createdAt": "2025-08-11T13:10:13.534Z",
+      "comments": [],
+      "views": 5
+    },
+    {
+      "id": "2e16",
+      "title": "hẹ hẹtest apitest apitest apitest api",
+      "content": "test apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest apitest api",
+      "image": "https://media.istockphoto.com/id/1198931639/vi/anh/vi%E1%BA%BFt-blog-blogger-c%C3%B3-%E1%BA%A3nh-h%C6%B0%E1%BB%9Fng-%C4%91%E1%BB%8Dc-v%C4%83n-b%E1%BA%A3n-tr%C3%AAn-m%C3%A0n-h%C3%ACnh.jpg?s=612x612&w=0&k=20&c=45lClhnhzhPjspwU-zIYQn3W6x--UFAvXVXWaLyQ6i8=",
+      "author": "Hải Nam 123",
+      "authorId": "1",
+      "createdAt": "2025-08-11T13:46:06.824Z",
+      "comments": [],
+      "views": 0
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Hải Nam 123",
+      "email": "ngxuanhainam@gmail.com",
+      "password": "123123",
+      "avatar": "https://scontent.fsgn21-1.fna.fbcdn.net/v/t39.30808-1/473188510_3913475272259903_883054849279272328_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=106&ccb=1-7&_nc_sid=e99d92&_nc_ohc=IhLSBcHvZeIQ7kNvwHZsmeh&_nc_oc=Adm4rzH-ibQH2ePf-GfKyTpNYFNP5QcZHVQxZZevGftkCaQgB60UaL9YjMpYg03sGysvl7N7OtFOOYNv58QsYgPs&_nc_zt=24&_nc_ht=scontent.fsgn21-1.fna&_nc_gid=SwhH8xA0CsYjHL2BEb2y9w&oh=00_AfW0sRDywO1mScf4Aa44m9AngK0Rvn3JIy9o4Ja4ILs4KA&oe=689FAE15",
+      "createdAt": "2025-07-01T00:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "name": "Admin",
+      "email": "admin@example.com",
+      "password": "admin123",
+      "avatar": "https://via.placeholder.com/120x120/28a745/ffffff?text=AD",
+      "createdAt": "2025-06-01T00:00:00.000Z"
+    },
+    {
+      "id": "1754917795319",
+      "name": "test",
+      "email": "test@gmail.com",
+      "password": "123123",
+      "avatar": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT6ZaFgdoylVPLxgZng563rRtpQR7rTCAxXD7F1yn0O_IqrJslT_Q-6YYD4uwDWCApH_jhRxPS2QcSxx-ouHG2RW8DX4uN_TIYuvpMyHT__",
+      "createdAt": "2025-08-11T13:09:55.319Z"
+    }
+  ],
+  "comments": []
+}
