@@ -1,13 +1,6 @@
 <template>
   <div class="post-detail">
-    <div v-if="loading" class="text-center py-5">
-      <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Đang tải...</span>
-      </div>
-      <p class="mt-3">Đang tải bài viết...</p>
-    </div>
-
-    <div v-else-if="!post" class="text-center py-5">
+    <div v-if="!post" class="text-center py-5">
       <div class="alert alert-warning">
         <i class="fas fa-exclamation-triangle me-2"></i>
         Không tìm thấy bài viết
@@ -90,10 +83,8 @@
                       required
                     ></textarea>
                   </div>
-                  <button type="submit" class="btn btn-primary" :disabled="isSubmitting">
-                    <span v-if="isSubmitting" class="spinner-border spinner-border-sm me-2"></span>
-                    <i v-else class="fas fa-paper-plane me-2"></i>
-                    {{ isSubmitting ? 'Đang gửi...' : 'Gửi bình luận' }}
+                  <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-paper-plane me-2"></i>Gửi bình luận
                   </button>
                 </form>
               </div>
@@ -151,11 +142,10 @@ export default {
   data() {
     return {
       post: null,
-      loading: true,
-      newComment: '',
-      isSubmitting: false
+      newComment: ''
     }
   },
+  
   computed: {
     currentUser() {
       const user = localStorage.getItem('currentUser')
@@ -165,26 +155,22 @@ export default {
       return this.currentUser && this.post && this.post.authorId === this.currentUser.id
     }
   },
+  
   methods: {
     async loadPost() {
       try {
         const postId = this.$route.params.id
         const response = await fetch(`http://localhost:3000/posts/${postId}`)
         
-        if (!response.ok) {
-          throw new Error('Không tìm thấy bài viết')
+        if (response.ok) {
+          this.post = await response.json()
+          // Increment view count
+          await this.incrementViews()
         }
-        
-        this.post = await response.json()
-        
-        // Increment view count
-        await this.incrementViews()
         
       } catch (error) {
         console.error('Error loading post:', error)
         this.post = null
-      } finally {
-        this.loading = false
       }
     },
 
@@ -210,8 +196,6 @@ export default {
 
     async addComment() {
       if (!this.newComment.trim() || !this.currentUser) return
-      
-      this.isSubmitting = true
       
       try {
         const comment = {
@@ -240,15 +224,10 @@ export default {
         if (response.ok) {
           this.post = updatedPost
           this.newComment = ''
-        } else {
-          throw new Error('Không thể thêm bình luận')
         }
 
       } catch (error) {
         console.error('Error adding comment:', error)
-        alert('Có lỗi xảy ra khi thêm bình luận')
-      } finally {
-        this.isSubmitting = false
       }
     },
 
@@ -269,13 +248,10 @@ export default {
 
         if (response.ok) {
           this.post = updatedPost
-        } else {
-          throw new Error('Không thể xóa bình luận')
         }
 
       } catch (error) {
         console.error('Error deleting comment:', error)
-        alert('Có lỗi xảy ra khi xóa bình luận')
       }
     },
 
@@ -296,13 +272,10 @@ export default {
 
         if (response.ok) {
           this.$router.push('/')
-        } else {
-          throw new Error('Không thể xóa bài viết')
         }
 
       } catch (error) {
         console.error('Error deleting post:', error)
-        alert('Có lỗi xảy ra khi xóa bài viết')
       }
     },
 
@@ -317,6 +290,7 @@ export default {
       })
     }
   },
+  
   mounted() {
     this.loadPost()
   }

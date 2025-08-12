@@ -1,5 +1,4 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
 import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 </script>
@@ -10,12 +9,11 @@ import Footer from './components/Footer.vue'
     <Navbar />
 
     <!-- Main Content -->
-    <main class="container mt-4">
+    <main class="container mt-4" style="min-height: 1000px !important;">
       <router-view></router-view>
     </main>
-
     <!-- Footer -->
-    <Footer />
+    <Footer/>
   </div>
 </template>
 

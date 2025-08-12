@@ -92,15 +92,12 @@ export default {
   
   mounted() {
     this.checkAuth()
-    window.addEventListener('storage', this.checkAuth)
-    window.addEventListener('auth-changed', this.checkAuth)
-    // Thêm event listener cho đăng nhập thành công
+    // Chỉ giữ lại event listener cần thiết
     window.addEventListener('login-success', this.checkAuth)
   },
+  
   beforeUnmount() {
-    // Cleanup event listeners
-    window.removeEventListener('storage', this.checkAuth)
-    window.removeEventListener('auth-changed', this.checkAuth)
+    // Chỉ remove event listener cần thiết
     window.removeEventListener('login-success', this.checkAuth)
   }
 }

@@ -38,14 +38,17 @@
       </div>
 
     </div>
+
     <!-- Search and Filter -->
     <div class="row">
-       <div class="col-md-3 slidebar">
+      <!-- Slide Bar -->
+      <div class="col-md-3 slidebar">
         <div class="list-group mt-5">
           <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
             Danh sách bài viết yêu thích
           </a>
-          <a href="#" class="list-group-item list-group-item-action" v-for="post in savedPosts" :key="post.id">
+          <a href="#" class="list-group-item list-group-item-action" v-for="post in savedPosts.slice(0, 5)"
+            :key="post.id">
             {{ post.title }}</a>
 
         </div>
@@ -60,36 +63,23 @@
           <button type="submit" class="btn btn-primary">Đăng ký</button>
         </form>
       </div>
+
+      <!-- Search -->
       <div class="col-md-9">
         <div class="row mb-4 mt-5">
           <div class="col-md-8">
             <div class="input-group">
-              <input v-model="searchQuery" type="text" class="form-control" placeholder="Tìm kiếm bài viết..."
-                @input="filterPosts">
+              <input type="text" class="form-control" placeholder="Tìm kiếm bài viết...">
               <button class="btn btn-outline-secondary" type="button">
                 <i class="fas fa-search"></i>
               </button>
             </div>
           </div>
-          <div class="col-md-2">
-            <select class="form-select">
-              <option value="newest">Mới nhất</option>
-              <option value="oldest">Cũ nhất</option>
-              <option value="title">Theo tiêu đề</option>
-            </select>
-          </div>
-          <div class="col-md-2">
-            <button @click="refreshPosts" class="btn btn-outline-primary w-100" :disabled="isLoading">
-              <i v-if="isLoading" class="fas fa-spinner fa-spin me-1"></i>
-              <i v-else class="fas fa-sync-alt me-1"></i>
-              {{ isLoading ? 'Đang tải...' : 'Làm mới' }}
-            </button>
-          </div>
         </div>
 
-                 <!-- Posts Grid -->
-         <div v-if="paginatedPosts.length > 0" class="row">
-           <div v-for="post in paginatedPosts" :key="post.id" class="col-md-6 col-lg-4 mb-4">
+        <!-- Posts Grid -->
+        <div v-if="paginatedPosts.length > 0" class="row">
+          <div v-for="post in paginatedPosts" :key="post.id" class="col-md-6 col-lg-4 mb-4">
             <div class="card h-100 shadow-sm">
               <img v-if="post.image" :src="post.image" class="card-img-top" style="height: 200px; object-fit: cover;"
                 :alt="post.title">
@@ -105,7 +95,7 @@
                   <small class="text-muted">
                     <i class="fas fa-user me-1"></i>{{ post.author }}
                     <span class="ms-3">
-                      <i class="fas fa-calendar me-1"></i> Ngày đăng: {{ formatDate(post.createdAt) }}
+                      <i class="fas fa-calendar me-1"></i>{{ formatDate(post.createdAt) }}
                     </span>
                   </small>
                   <div class="mt-2">
@@ -136,10 +126,8 @@
           </ul>
         </nav>
       </div>
-     
+
     </div>
-
-
 
 
   </div>
@@ -152,32 +140,35 @@ export default {
     return {
       posts: [],
       filteredPosts: [],
-      searchQuery: '',
-      sortBy: 'newest',
       currentPage: 1,
-      postsPerPage: 6,
-      isLoading: false
+      postsPerPage: 6
     }
   },
   computed: {
-    isAuthenticated() {
-      return localStorage.getItem('user') !== null
-    },
+
+    // isAuthenticated() {
+    //   return localStorage.getItem('user') !== null
+    // },
+
     currentUser() {
       const user = localStorage.getItem('user')
       return user ? JSON.parse(user) : null
     },
+
     savedPosts() {
       return this.posts || []
     },
+
     totalPages() {
       return Math.ceil(this.filteredPosts.length / this.postsPerPage);
     },
+
     paginatedPosts() {
       const start = (this.currentPage - 1) * this.postsPerPage
       const end = start + this.postsPerPage
       return this.filteredPosts.slice(start, end)
     },
+
     visiblePages() {
       const pages = []
       const start = Math.max(1, this.currentPage - 2)
@@ -189,65 +180,31 @@ export default {
       return pages
     }
   },
+
   methods: {
     async loadPosts() {
-      this.isLoading = true
       try {
-        // Kiểm tra cache trong localStorage trước
         const savedPosts = localStorage.getItem('posts')
-        if (savedPosts) {
-          this.posts = JSON.parse(savedPosts)
-          this.filteredPosts = [...this.posts]
-          return
-        }
-
         // Gọi API từ json-server
         const response = await fetch('http://localhost:3000/posts')
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
-        
+
         this.posts = await response.json()
-        
+
         // Cập nhật filteredPosts
         this.filteredPosts = [...this.posts]
-        
+
       } catch (error) {
         console.error('Error loading posts:', error)
-        // Fallback: sử dụng dữ liệu mặc định nếu API fail
-        this.posts = [
-          {
-            id: 1,
-            title: 'Cà phê Sách Đà Nẵng',
-            content: 'Không gian yên tĩnh, nhiều sách, phù hợp học tập và làm việc. Địa chỉ: 123 Lê Duẩn, Đà Nẵng.',
-            author: 'Hải Nam',
-            authorId: 1,
-            createdAt: new Date('2025-07-01'),
-            image: '/images/banner-1.jpg',
-            comments: [],
-            views: 150
-          },
-          {
-            id: 2,
-            title: 'Bãi biển Mỹ Khê',
-            content: 'Một trong những bãi biển đẹp nhất Việt Nam, nước trong xanh, cát trắng mịn. Địa chỉ: Võ Nguyên Giáp, Đà Nẵng.',
-            author: 'Admin',
-            authorId: 1,
-            createdAt: new Date('2025-06-20'),
-            image: '/images/banner-2.jpg',
-            comments: [],
-            views: 230
-          }
-        ]
-        this.filteredPosts = [...this.posts]
-      } finally {
-        this.isLoading = false
       }
     },
     truncateContent(content, length = 150) {
       if (content.length <= length) return content
       return content.substring(0, length) + '...'
     },
+
     formatDate(date) {
       return new Date(date).toLocaleDateString('vi-VN', {
         year: 'numeric',
@@ -255,62 +212,12 @@ export default {
         day: 'numeric'
       })
     },
+
     changePage(page) {
       if (page >= 1 && page <= this.totalPages) {
         this.currentPage = page
       }
     },
-    editPost(postId) {
-      this.$router.push(`/create-post?edit=${postId}`)
-    },
-    async deletePost(postId) {
-      if (confirm('Bạn có chắc chắn muốn xóa bài viết này?')) {
-        try {
-          // Xóa post từ json-server
-          const response = await fetch(`http://localhost:3000/posts/${postId}`, {
-            method: 'DELETE'
-          })
-          
-          if (response.ok) {
-            // Xóa post khỏi mảng posts
-            this.posts = this.posts.filter(post => post.id !== postId)
-            this.filteredPosts = this.filteredPosts.filter(post => post.id !== postId)
-            
-            // Cập nhật localStorage
-            localStorage.setItem('posts', JSON.stringify(this.posts))
-          } else {
-            alert('Có lỗi xảy ra khi xóa bài viết')
-          }
-        } catch (error) {
-          console.error('Error deleting post:', error)
-          alert('Có lỗi xảy ra khi xóa bài viết')
-        }
-      }
-    },
-    
-    // Method để refresh dữ liệu từ API
-    async refreshPosts() {
-      // Xóa cache
-      localStorage.removeItem('posts')
-      // Load lại dữ liệu từ json-server
-      await this.loadPosts()
-    },
-    
-    // Method để filter posts theo search query
-    filterPosts() {
-      if (!this.searchQuery.trim()) {
-        this.filteredPosts = [...this.posts]
-      } else {
-        const query = this.searchQuery.toLowerCase()
-        this.filteredPosts = this.posts.filter(post => 
-          post.title.toLowerCase().includes(query) ||
-          post.content.toLowerCase().includes(query) ||
-          post.author.toLowerCase().includes(query)
-        )
-      }
-      // Reset về trang 1 khi search
-      this.currentPage = 1
-    }
   },
   mounted() {
     this.loadPosts()
@@ -338,19 +245,23 @@ export default {
 }
 
 .slidebar .list-group-item.active {
-  background-color: #DAB49D !important; /* Nâu nhẹ cho item active */
+  background-color: #DAB49D !important;
+  /* Nâu nhẹ cho item active */
   border-color: #DAB49D !important;
   color: #fff !important;
   font-weight: bold;
 }
+
 .slidebar .list-group-item {
   background-color: #fff;
   color: #333;
   border: 1px solid #DAB49D;
   transition: background 0.2s, color 0.2s;
 }
+
 .slidebar .list-group-item:hover {
-  background-color: #E59866 !important; /* Cam đậm khi hover */
+  background-color: #E59866 !important;
+  /* Cam đậm khi hover */
   color: #fff !important;
 }
 

@@ -22,20 +22,21 @@
 
             <!-- Register Form -->
             <form @submit.prevent="handleRegister" novalidate>
+
               <div class="mb-3">
                 <label for="name" class="form-label">
                   <i class="fas fa-user me-1"></i>Họ và tên
                 </label>
-                <input id="name" v-model="form.name" type="text" class="form-control" 
-                       placeholder="Nhập họ và tên" required>
+                <input id="name" v-model="form.name" type="text" class="form-control" placeholder="Nhập họ và tên"
+                  required>
               </div>
 
               <div class="mb-3">
                 <label for="email" class="form-label">
                   <i class="fas fa-envelope me-1"></i>Email
                 </label>
-                <input id="email" v-model="form.email" type="email" class="form-control" 
-                       placeholder="Nhập email của bạn" required>
+                <input id="email" v-model="form.email" type="email" class="form-control"
+                  placeholder="Nhập email của bạn" required>
               </div>
 
               <div class="mb-3">
@@ -43,8 +44,8 @@
                   <i class="fas fa-lock me-1"></i>Mật khẩu
                 </label>
                 <div class="input-group">
-                  <input id="password" v-model="form.password" type="password" class="form-control" 
-                         placeholder="Nhập mật khẩu" required>
+                  <input id="password" v-model="form.password" type="password" class="form-control"
+                    placeholder="Nhập mật khẩu" required>
                 </div>
                 <div class="form-text">
                   Mật khẩu phải có ít nhất 6 ký tự
@@ -56,16 +57,9 @@
                   <i class="fas fa-lock me-1"></i>Xác nhận mật khẩu
                 </label>
                 <div class="input-group">
-                  <input id="confirmPassword" v-model="form.confirmPassword" type="password" class="form-control" 
-                         placeholder="Nhập lại mật khẩu" required>
+                  <input id="confirmPassword" v-model="form.confirmPassword" type="password" class="form-control"
+                    placeholder="Nhập lại mật khẩu" required>
                 </div>
-              </div>
-
-              <div class="mb-3 form-check">
-                <input id="agreeTerms" v-model="form.agreeTerms" type="checkbox" class="form-check-input" required>
-                <label class="form-check-label" for="agreeTerms">
-                  Tôi đồng ý với điều khoản sử dụng
-                </label>
               </div>
 
               <div class="d-grid">
@@ -75,10 +69,10 @@
                   {{ isLoading ? 'Đang đăng ký...' : 'Đăng ký' }}
                 </button>
               </div>
+              
             </form>
-
+            
             <hr class="my-4">
-
             <div class="text-center">
               <p class="mb-0">
                 Đã có tài khoản?
@@ -103,8 +97,7 @@ export default {
         name: '',
         email: '',
         password: '',
-        confirmPassword: '',
-        agreeTerms: false
+        confirmPassword: ''
       },
       errorMessage: '',
       successMessage: '',
@@ -126,10 +119,10 @@ export default {
         if (!response.ok) {
           throw new Error('Không thể kết nối đến server')
         }
-        
+
         const users = await response.json()
         const existingUser = users.find(u => u.email === this.form.email)
-        
+
         if (existingUser) {
           throw new Error('Email đã được sử dụng')
         }
@@ -159,7 +152,7 @@ export default {
 
         // Tự động đăng nhập sau khi đăng ký
         localStorage.setItem('currentUser', JSON.stringify(newUser))
-        
+
         this.successMessage = 'Đăng ký thành công! Bạn sẽ được chuyển đến trang chủ.'
 
         // Dispatch event để Navbar cập nhật ngay lập tức
@@ -179,7 +172,7 @@ export default {
 
     validateForm() {
       this.errorMessage = ''
-      
+
       if (!this.form.name.trim()) {
         this.errorMessage = 'Vui lòng nhập họ và tên'
         return false
@@ -207,11 +200,6 @@ export default {
 
       if (this.form.password !== this.form.confirmPassword) {
         this.errorMessage = 'Mật khẩu xác nhận không khớp'
-        return false
-      }
-
-      if (!this.form.agreeTerms) {
-        this.errorMessage = 'Vui lòng đồng ý với điều khoản sử dụng'
         return false
       }
 

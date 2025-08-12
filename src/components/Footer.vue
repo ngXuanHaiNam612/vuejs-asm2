@@ -14,8 +14,11 @@ export default {
 
 <style scoped>
 .custom-footer {
-  background-color: #DAB49D !important; /* Nâu nhẹ cho footer */
+  background-color: #DAB49D !important;
+  /* Nâu nhẹ cho footer */
+  margin-top: 1000px;
 }
+
 footer {
   font-size: 1rem;
 }
